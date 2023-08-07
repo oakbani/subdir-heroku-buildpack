@@ -17,12 +17,19 @@ if [ -f $ENV_DIR/PROJECT_PATH ]; then
 		TMP_DIR=`mktemp -d $CACHE_DIR/subdirXXXXX`
 		echo "       created tmp dir: $TMP_DIR"
 		echo " === Removing gems symlink from Project directory === "
+
 		rm $BUILD_DIR/$PROJECT_PATH/gems
+		ls -lf $BUILD_DIR/$PROJECT_PATH
+
 		echo "       moving working dir: $PROJECT_PATH to $TMP_DIR"
 		cp -R $BUILD_DIR/$PROJECT_PATH/. $TMP_DIR/
+
 		echo " === Moving gems directory to temp directory === "
-		mkdir $TMP_DIR/gems
+		mkdir -p $TMP_DIR/gems
 		cp -R $BUILD_DIR/gems/ $TMP_DIR/gems/
+		ls $TMP_DIR
+		ls $TMP_DIR/gems
+
 	 	echo "       cleaning build dir $BUILD_DIR"
 		rm -rf $BUILD_DIR/*
 		echo "       copying preserved work dir from cache $TMP_DIR to build dir $BUILD_DIR"
