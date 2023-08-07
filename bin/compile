@@ -26,7 +26,7 @@ if [ -f $ENV_DIR/PROJECT_PATH ]; then
 
 		echo " === Moving gems directory to temp directory === "
 		mkdir -p $TMP_DIR/gems
-		cp -R $BUILD_DIR/gems/ $TMP_DIR/gems/
+		cp -R $BUILD_DIR/gems/. $TMP_DIR/gems/
 		ls $TMP_DIR
 		ls $TMP_DIR/gems
 
